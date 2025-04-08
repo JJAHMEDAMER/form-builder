@@ -1,7 +1,9 @@
+import { FormBuilder } from "@/modules/form-builder/FormBuilder";
+
 export function App() {
   return (
     <>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <FormBuilder />
     </>
   );
 }
