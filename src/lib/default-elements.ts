@@ -1,11 +1,12 @@
 export const FORM_ELEMENTS = {
   ONE_LINE_INPUT: "one-line-input",
   MULTI_LINE_INPUT: "multi-line-input",
+  SINGLE_SELECT: "single-select",
 } as const;
 
 export type elementsTypes = (typeof FORM_ELEMENTS)[keyof typeof FORM_ELEMENTS];
 
-import { Minus, WrapText } from "lucide-react";
+import { Minus, WrapText, Dot } from "lucide-react";
 export const ELEMENTS_DATA = {
   [FORM_ELEMENTS.ONE_LINE_INPUT]: {
     label: "One line Input",
@@ -16,6 +17,11 @@ export const ELEMENTS_DATA = {
     label: "Multi line Input",
     description: "A multi line input field",
     icon: WrapText,
+  },
+  [FORM_ELEMENTS.SINGLE_SELECT]: {
+    label: "Single Select",
+    description: "A single select field",
+    icon: Dot,
   },
 };
 
@@ -41,6 +47,15 @@ export type MultiLineInputElementType = GenericElementType & {
   options: string[];
 };
 
+export type SingleSelectElementType = GenericElementType & {
+  label: string;
+  required: boolean;
+  options: {
+    value: string;
+    label: string;
+  }[];
+};
+
 export const getOneLineInputElementDefault = (
   id: string,
   order?: number
@@ -55,10 +70,11 @@ export const getOneLineInputElementDefault = (
 });
 
 export const getMultiLineInputElementDefault = (
-  id: string
+  id: string,
+  order?: number
 ): MultiLineInputElementType => ({
   id: id,
-  order: 0,
+  order: order || 0,
   type: FORM_ELEMENTS.MULTI_LINE_INPUT,
   label: "Untitled Question",
   placeholder: "Enter text here...",
@@ -67,15 +83,35 @@ export const getMultiLineInputElementDefault = (
   options: [],
 });
 
+export const getSingleSelectElementDefault = (
+  id: string,
+  order?: number
+): SingleSelectElementType => ({
+  id: id,
+  order: order || 0,
+  type: FORM_ELEMENTS.SINGLE_SELECT,
+  label: "Untitled Question",
+  required: false,
+  options: [
+    {
+      value: "option1",
+      label: "Option 1",
+    },
+  ],
+});
+
 export const getElementDefault = (
   id: string,
+  order: number,
   type: elementsTypes
 ): GenericElementType => {
   switch (type) {
     case FORM_ELEMENTS.ONE_LINE_INPUT:
-      return getOneLineInputElementDefault(id);
+      return getOneLineInputElementDefault(id, order);
     case FORM_ELEMENTS.MULTI_LINE_INPUT:
-      return getMultiLineInputElementDefault(id);
+      return getMultiLineInputElementDefault(id, order);
+    case FORM_ELEMENTS.SINGLE_SELECT:
+      return getSingleSelectElementDefault(id, order);
     default:
       throw new Error("Unknown element type");
   }

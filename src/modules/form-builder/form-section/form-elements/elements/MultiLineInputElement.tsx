@@ -1,21 +1,25 @@
 import { ElementsTitle } from "@/components/ui/elements-title";
 import { Textarea } from "@/components/ui/textarea";
+import { useFormBuilderContext } from "@/context/FormBuilderContext";
 import {
   GenericElementType,
   MultiLineInputElementType,
 } from "@/lib/default-elements";
-import { useState } from "react";
 
 export default function MultiLineInputElement({
-  item,
+  itemId,
 }: {
-  item: GenericElementType;
+  itemId: GenericElementType["id"];
 }) {
-  const elementIdData = item as MultiLineInputElementType;
-  const [innerState, setInnerState] = useState(elementIdData);
+  const { formData, setFormData } = useFormBuilderContext();
+  const elementIdData = formData.get(itemId) as MultiLineInputElementType;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInnerState({ ...innerState, label: e.target.innerHTML });
+    setFormData((prev) => {
+      const temp = new Map(prev);
+      temp.set(itemId, { ...elementIdData, label: e.target.innerHTML });
+      return temp;
+    });
   };
 
   return (
@@ -28,8 +32,8 @@ export default function MultiLineInputElement({
         data-placeholder={"Untitled Question"}
       />
       <Textarea
-        rows={innerState.lineNumbers}
-        placeholder={innerState.placeholder}
+        rows={elementIdData.lineNumbers}
+        placeholder={elementIdData.placeholder}
       />
     </div>
   );

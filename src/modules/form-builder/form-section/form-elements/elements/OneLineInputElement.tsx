@@ -2,16 +2,24 @@ import {
   GenericElementType,
   OneLineInputElementType,
 } from "@/lib/default-elements";
-import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { ElementsTitle } from "@/components/ui/elements-title";
+import { useFormBuilderContext } from "@/context/FormBuilderContext";
 
-export function OneLineInputElement({ item }: { item: GenericElementType }) {
-  const elementIdData = item as OneLineInputElementType;
-  const [innerState, setInnerState] = useState(elementIdData);
+export function OneLineInputElement({
+  itemId,
+}: {
+  itemId: GenericElementType["id"];
+}) {
+  const { formData, setFormData } = useFormBuilderContext();
+  const elementIdData = formData.get(itemId) as OneLineInputElementType;
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInnerState({ ...innerState, label: e.target.innerHTML });
+    setFormData((prev) => {
+      const temp = new Map(prev);
+      temp.set(itemId, { ...elementIdData, label: e.target.innerHTML });
+      return temp;
+    });
   };
 
   return (
@@ -23,7 +31,7 @@ export function OneLineInputElement({ item }: { item: GenericElementType }) {
         className={`text-lg font-bold mb-2 px-2`}
         data-placeholder={"Untitled Question"}
       />
-      <Input type="text" placeholder={innerState.placeholder} />
+      <Input type="text" placeholder={elementIdData.placeholder} />
     </div>
   );
 }

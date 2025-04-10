@@ -6,14 +6,21 @@ import {
 import { OneLineInputElement } from "@/modules/form-builder/form-section/form-elements/elements/OneLineInputElement";
 import { memo, useEffect, useState } from "react";
 import MultiLineInputElement from "./elements/MultiLineInputElement";
+import SingleSelectElement from "./elements/SingleSelectElement";
 
 export const FormElements = memo(
-  ({ type, item }: { type: elementsTypes; item: GenericElementType }) => {
+  ({
+    type,
+    itemId,
+  }: {
+    type: elementsTypes;
+    itemId: GenericElementType["id"];
+  }) => {
     switch (type) {
       case FORM_ELEMENTS.ONE_LINE_INPUT: {
         return (
           <JustMountedWrapper>
-            <OneLineInputElement item={item} />
+            <OneLineInputElement itemId={itemId} />
           </JustMountedWrapper>
         );
       }
@@ -21,7 +28,15 @@ export const FormElements = memo(
       case FORM_ELEMENTS.MULTI_LINE_INPUT: {
         return (
           <JustMountedWrapper>
-            <MultiLineInputElement item={item} />
+            <MultiLineInputElement itemId={itemId} />
+          </JustMountedWrapper>
+        );
+      }
+
+      case FORM_ELEMENTS.SINGLE_SELECT: {
+        return (
+          <JustMountedWrapper>
+            <SingleSelectElement itemId={itemId} />
           </JustMountedWrapper>
         );
       }
