@@ -15,11 +15,11 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="flex h-full items-center bg-sky-900 p-4 text-white">
+    <header className="bg-surface-200 flex h-full items-center p-4">
       <div className="container flex w-full items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Form Builder</h1>
-          <p className="text-sm text-gray-300">Build forms with ease</p>
+          <p className="text-text-400 text-sm">Build forms with ease</p>
         </div>
 
         <span className="text-sm font-semibold text-gray-300">
