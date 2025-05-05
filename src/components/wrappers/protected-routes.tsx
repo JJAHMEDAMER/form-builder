@@ -1,6 +1,6 @@
 import { routes } from "@/constants/routes";
 import { SESSION_STORAGE_KEYS } from "@/constants/web-store";
-import { useAuthContext } from "@/context/AuthContext";
+import { useAuthContext } from "@/context/auth-context";
 import { useEffect } from "react";
 import { Navigate } from "react-router";
 

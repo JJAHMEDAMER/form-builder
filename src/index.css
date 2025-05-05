@@ -1,7 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
@@ -44,6 +44,50 @@
 
   --color-main-background: var(--main-background);
   --color-main-foreground: var(--main-foreground);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-active: var(--accent-active);
+
+  --color-teal: var(--teal);
+  --color-teal-hover: var(--teal-hover);
+  --color-teal-active: var(--teal-active);
+
+  --color-text-100: var(--text-100);
+  --color-text-200: var(--text-200);
+  --color-text-300: var(--text-300);
+  --color-text-400: var(--text-400);
+  --color-text-500: var(--text-500);
+
+  --color-text-light-100: var(--text-light-100);
+  --color-text-light-200: var(--text-light-200);
+  --color-text-light-300: var(--text-light-300);
+  --color-text-light-400: var(--text-light-400);
+  --color-text-light-500: var(--text-light-500);
+
+  --color-text-dark-100: var(--text-dark-100);
+  --color-text-dark-200: var(--text-dark-200);
+  --color-text-dark-300: var(--text-dark-300);
+  --color-text-dark-400: var(--text-dark-400);
+  --color-text-dark-500: var(--text-dark-500);
+
+  --color-surface-100: var(--surface-100);
+  --color-surface-200: var(--surface-200);
+  --color-surface-300: var(--surface-300);
+  --color-surface-400: var(--surface-400);
+  --color-surface-500: var(--surface-500);
+
+  --color-surface-light-100: var(--surface-light-100);
+  --color-surface-light-200: var(--surface-light-200);
+  --color-surface-light-300: var(--surface-light-300);
+  --color-surface-light-400: var(--surface-light-400);
+  --color-surface-light-500: var(--surface-light-500);
+
+  --color-surface-dark-100: var(--surface-dark-100);
+  --color-surface-dark-200: var(--surface-dark-200);
+  --color-surface-dark-300: var(--surface-dark-300);
+  --color-surface-dark-400: var(--surface-dark-400);
+  --color-surface-dark-500: var(--surface-dark-500);
 }
 
 :root {
@@ -83,9 +127,61 @@
   /* APP VARS */
   --main-background: #f7f7e6;
   --main-foreground: #121212;
+
+  /** App Theme */
+  /* Accent (Gold) */
+  --accent: #d4af37;
+  --accent-hover: #e0c45b;
+  --accent-active: #b8952e;
+
+  /* Complementary (Teal) */
+  --teal: #008080;
+  --teal-hover: #339999;
+  --teal-active: #006666;
+
+  --text-100: #121212;
+  --text-200: #333333;
+  --text-300: #4d4d4d;
+  --text-400: #666666;
+  --text-500: #808080;
+
+  /* Text Colors for Light Surfaces */
+  --text-light-100: #121212;
+  --text-light-200: #333333;
+  --text-light-300: #4d4d4d;
+  --text-light-400: #666666;
+  --text-light-500: #808080;
+
+  /* Text Colors for Dark Surfaces */
+  --text-dark-100: #ffffff;
+  --text-dark-200: #e5e5e5;
+  --text-dark-300: #cccccc;
+  --text-dark-400: #b2b2b2;
+  --text-dark-500: #999999;
+
+  /* Surfaces */
+  --surface-100: #ffffff;
+  --surface-200: #f9f9f9;
+  --surface-300: #efefef;
+  --surface-400: #e0e0e0;
+  --surface-500: #cccccc;
+
+  /* Core Light Surfaces */
+  --surface-light-100: #ffffff;
+  --surface-light-200: #f9f9f9;
+  --surface-light-300: #efefef;
+  --surface-light-400: #e0e0e0;
+  --surface-light-500: #cccccc;
+
+  /* Core Dark Surfaces */
+  --surface-dark-100: #1a1a1a;
+  --surface-dark-200: #2a2a2a;
+  --surface-dark-300: #3a3a3a;
+  --surface-dark-400: #4a4a4a;
+  --surface-dark-500: #5a5a5a;
 }
 
-.dark {
+[data-theme="dark"] {
   --background: oklch(0.147 0.004 49.25);
   --foreground: oklch(0.985 0.001 106.423);
   --card: oklch(0.216 0.006 56.043);
@@ -117,14 +213,28 @@
   --sidebar-accent-foreground: oklch(0.985 0.001 106.423);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.553 0.013 58.071);
+
+  /** App theme */
+  --text-100: #ffffff;
+  --text-200: #e5e5e5;
+  --text-300: #cccccc;
+  --text-400: #b2b2b2;
+  --text-500: #999999;
+
+  /* Core Dark Surfaces */
+  --surface-100: #1a1a1a;
+  --surface-200: #2a2a2a;
+  --surface-300: #3a3a3a;
+  --surface-400: #4a4a4a;
+  --surface-500: #5a5a5a;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 transition-colors; /*transition-colors for smooth transition on theme change*/
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-surface-100 text-text-100;
   }
 }
 

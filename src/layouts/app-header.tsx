@@ -1,11 +1,14 @@
 import { routes } from "@/constants/routes";
-import { useAuthContext } from "@/context/AuthContext";
+import { useThemeContext } from "@/context/app-theme";
+import { useAuthContext } from "@/context/auth-context";
 import { logoutUser } from "@/lib/user-management";
+import { MoonIcon, SunIcon } from "lucide-react";
 import { useNavigate } from "react-router";
 
 export default function AppHeader() {
   const { session } = useAuthContext();
   const navigate = useNavigate();
+  const { theme, toggleThemeState } = useThemeContext();
 
   const handleLogOutButton = () => {
     session ? logoutUser() : navigate(routes.auth);
@@ -18,6 +21,18 @@ export default function AppHeader() {
           <h1 className="text-2xl font-bold">Form Builder</h1>
           <p className="text-sm text-gray-300">Build forms with ease</p>
         </div>
+
+        <span className="text-sm font-semibold text-gray-300">
+          {session ? `Welcome, ${session.user.email}` : "Please log in"}
+        </span>
+
+        <button className="cursor-pointer" onClick={toggleThemeState}>
+          {theme === "dark" ? (
+            <SunIcon className="h-6 w-6 text-yellow-400" />
+          ) : (
+            <MoonIcon className="h-6 w-6 text-gray-300" />
+          )}
+        </button>
 
         <button
           onClick={handleLogOutButton}

@@ -1,5 +1,5 @@
 import { MainLayout } from "@/layouts/main-layout";
-import { AuthContextProvider } from "@/context/AuthContext";
+import { AuthContextProvider } from "@/context/auth-context";
 import SupabaseAuthForm from "@/modules/auth/supabase-auth-form";
 import { HomePage } from "@/modules/home/home-page";
 import { createBrowserRouter } from "react-router";
@@ -9,10 +9,15 @@ import {
   UnauthenticatedRoutes,
   unauthenticatedRoutesLoader,
 } from "@/components/wrappers/unauthenticated-routes";
+import ThemeProvider from "@/context/app-theme";
 
 export const router = createBrowserRouter([
   {
-    element: <AuthContextProvider />,
+    element: (
+      <ThemeProvider>
+        <AuthContextProvider />
+      </ThemeProvider>
+    ),
     children: [
       {
         element: <MainLayout />,
