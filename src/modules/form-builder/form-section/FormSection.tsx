@@ -6,7 +6,7 @@ import {
 import React, { useState } from "react";
 import { FormElements } from "./form-elements/FormElements";
 import { v4 as uuid } from "uuid";
-import { useFormBuilderContext } from "@/context/FormBuilderContext";
+import { useFormBuilderContext } from "@/context/form-builder-context";
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 

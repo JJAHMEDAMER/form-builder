@@ -1,6 +1,6 @@
 import { SideMenu } from "@/modules/form-builder/side-menu/SideMenu";
 import { FormSection } from "./form-section/FormSection";
-import { FormBuilderProvider } from "@/context/FormBuilderContext";
+import { FormBuilderProvider } from "@/context/form-builder-context";
 
 export function FormBuilder() {
   return (

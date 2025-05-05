@@ -4,7 +4,7 @@ import {
 } from "@/lib/default-elements";
 import { Input } from "@/components/ui/input";
 import { ElementsTitle } from "@/components/ui/elements-title";
-import { useFormBuilderContext } from "@/context/FormBuilderContext";
+import { useFormBuilderContext } from "@/context/form-builder-context";
 
 export function OneLineInputElement({
   itemId,

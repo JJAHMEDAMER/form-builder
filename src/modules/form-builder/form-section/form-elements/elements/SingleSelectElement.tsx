@@ -6,7 +6,7 @@ import {
   SingleSelectElementType,
 } from "@/lib/default-elements";
 import { CirclePlus, Trash2 } from "lucide-react";
-import { useFormBuilderContext } from "@/context/FormBuilderContext";
+import { useFormBuilderContext } from "@/context/form-builder-context";
 import Contenteditable from "@/components/ui/ContentEditable";
 import { Label } from "@/components/ui/label";
 
