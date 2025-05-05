@@ -43,8 +43,6 @@ export const AuthContextProvider = () => {
     return () => subscription.unsubscribe();
   }, []);
 
-  console.log("session", session);
-
   const sharedState: AuthContext = {
     session,
   };

@@ -9,7 +9,6 @@ export default function SupabaseAuthForm() {
   const redirectToUrl =
     sessionStorage.getItem(SESSION_STORAGE_KEYS.REDIRECT_PATH) || routes.home;
 
-  console.log("redirectToUrl", redirectToUrl);
   return (
     <div className="container h-full flex items-center justify-center w-full gap-8">
       <div className="flex-1 max-w-lg lg:max-w-none">
@@ -18,7 +17,7 @@ export default function SupabaseAuthForm() {
           providers={[]}
           supabaseClient={supabase}
           appearance={{ theme: ThemeSupa }}
-          redirectTo={redirectToUrl}
+          redirectTo={redirectToUrl} // For email redirects
         />
       </div>
       <div className="flex-1 hidden lg:block">
