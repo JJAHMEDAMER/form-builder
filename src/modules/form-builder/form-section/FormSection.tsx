@@ -16,7 +16,7 @@ export function FormSection() {
 
   const handleDrop = (
     e: React.DragEvent<HTMLDivElement>,
-    dropOverItemId: GenericElementType["id"] | null
+    dropOverItemId: GenericElementType["id"] | null,
   ) => {
     const data = e.dataTransfer.getData("text/plain") as elementsTypes;
     setFormData((prev) => {
@@ -54,7 +54,7 @@ export function FormSection() {
         .sort((a, b) => a.order - b.order)
         .map((item) => (
           <div
-            className={`relative group after:absolute transition after:bg-stone-400 after:h-0.5  after:top-[calc(100%+0.45rem)] after:left-0 after:right-0 after:rounded-sm ${
+            className={`group relative transition after:absolute after:top-[calc(100%+0.45rem)] after:right-0 after:left-0 after:h-0.5 after:rounded-sm after:bg-stone-400 ${
               dragOverItem === item.id ? "after:opacity-100" : "after:opacity-0"
             }`}
             key={item.id}
@@ -64,7 +64,7 @@ export function FormSection() {
           >
             <Button
               onClick={() => handleDeleteElementClick(item.id)}
-              className="absolute -top-3 -right-3 hover:bg-red-500/50 bg-red-200 transition curser-pointer opacity-0 group-hover:opacity-100"
+              className="curser-pointer absolute -top-3 -right-3 bg-red-200 opacity-0 transition group-hover:opacity-100 hover:bg-red-500/50"
               variant="secondary"
             >
               <Trash2 />
@@ -77,7 +77,7 @@ export function FormSection() {
         onDragOver={handleDragEnter}
         onDragEnter={handleDragEnter}
         onDrop={(e) => handleDrop(e, null)}
-        className="border p-4 mb-4  rounded-md bg-stone-200"
+        className="mb-4 rounded-md border bg-stone-200 p-4"
       >
         Drop Element here on one of the above elements...
       </div>

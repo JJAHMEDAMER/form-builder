@@ -22,7 +22,7 @@ export const FormElementsDragCard = ({
           <div
             draggable
             onDragStart={handleDragStart}
-            className="w-12 cursor-grab h-12 bg-accent rounded-sm flex justify-center items-center border border-stone-300"
+            className="bg-accent flex h-12 w-12 cursor-grab items-center justify-center rounded-sm border border-stone-300"
           >
             <Icon className="text-stone-700" />
           </div>

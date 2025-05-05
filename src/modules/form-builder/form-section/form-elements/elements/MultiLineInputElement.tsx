@@ -23,12 +23,12 @@ export default function MultiLineInputElement({
   };
 
   return (
-    <div className="border p-4 mb-4  rounded-md">
+    <div className="mb-4 rounded-md border p-4">
       <ElementsTitle
         contentEditable
         suppressContentEditableWarning={true}
         onInput={handleInputChange}
-        className={`text-lg font-bold mb-2 px-2`}
+        className={`mb-2 px-2 text-lg font-bold`}
         data-placeholder={"Untitled Question"}
       />
       <Textarea

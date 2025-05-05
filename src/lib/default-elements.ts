@@ -58,7 +58,7 @@ export type SingleSelectElementType = GenericElementType & {
 
 export const getOneLineInputElementDefault = (
   id: string,
-  order?: number
+  order?: number,
 ): OneLineInputElementType => ({
   id: id,
   order: order || 0,
@@ -71,7 +71,7 @@ export const getOneLineInputElementDefault = (
 
 export const getMultiLineInputElementDefault = (
   id: string,
-  order?: number
+  order?: number,
 ): MultiLineInputElementType => ({
   id: id,
   order: order || 0,
@@ -85,7 +85,7 @@ export const getMultiLineInputElementDefault = (
 
 export const getSingleSelectElementDefault = (
   id: string,
-  order?: number
+  order?: number,
 ): SingleSelectElementType => ({
   id: id,
   order: order || 0,
@@ -103,7 +103,7 @@ export const getSingleSelectElementDefault = (
 export const getElementDefault = (
   id: string,
   order: number,
-  type: elementsTypes
+  type: elementsTypes,
 ): GenericElementType => {
   switch (type) {
     case FORM_ELEMENTS.ONE_LINE_INPUT:

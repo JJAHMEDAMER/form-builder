@@ -45,7 +45,7 @@ export const FormElements = memo(
         return <div>Unknown Element</div>;
       }
     }
-  }
+  },
 );
 
 export const JustMountedWrapper = ({

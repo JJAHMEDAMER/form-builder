@@ -12,8 +12,8 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="flex items-center h-full bg-sky-900 text-white p-4">
-      <div className="w-full container flex justify-between items-center">
+    <header className="flex h-full items-center bg-sky-900 p-4 text-white">
+      <div className="container flex w-full items-center justify-between">
         <div>
           <h1 className="text-2xl font-bold">Form Builder</h1>
           <p className="text-sm text-gray-300">Build forms with ease</p>
@@ -21,7 +21,7 @@ export default function AppHeader() {
 
         <button
           onClick={handleLogOutButton}
-          className="mt-4 cursor-pointer bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+          className="mt-4 cursor-pointer rounded bg-red-600 px-4 py-2 font-bold text-white hover:bg-red-700"
         >
           {session ? "Logout" : "Login"}
         </button>

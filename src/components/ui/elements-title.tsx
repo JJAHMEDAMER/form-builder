@@ -9,8 +9,8 @@ function ElementsTitle({ children, ...props }: React.ComponentProps<"div">) {
       {ref?.textContent === "" && (
         <div
           className={cn(
-            "absolute top-0 left-0 w-full h-full pointer-events-none text-gray-500",
-            props.className
+            "pointer-events-none absolute top-0 left-0 h-full w-full text-gray-500",
+            props.className,
           )}
         >
           {ref?.dataset["placeholder"]}

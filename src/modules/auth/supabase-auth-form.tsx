@@ -10,9 +10,9 @@ export default function SupabaseAuthForm() {
     sessionStorage.getItem(SESSION_STORAGE_KEYS.REDIRECT_PATH) || routes.home;
 
   return (
-    <div className="container h-full flex items-center justify-center w-full gap-8">
-      <div className="flex-1 max-w-lg lg:max-w-none">
-        <h1 className="text-3xl font-bold text-center mb-4">Welcome back!</h1>
+    <div className="container flex h-full w-full items-center justify-center gap-8">
+      <div className="max-w-lg flex-1 lg:max-w-none">
+        <h1 className="mb-4 text-center text-3xl font-bold">Welcome back!</h1>
         <Auth
           providers={[]}
           supabaseClient={supabase}
@@ -20,11 +20,11 @@ export default function SupabaseAuthForm() {
           redirectTo={redirectToUrl} // For email redirects
         />
       </div>
-      <div className="flex-1 hidden lg:block">
+      <div className="hidden flex-1 lg:block">
         <img
           src={AuthImages}
           alt="Supabase Logo"
-          className="w-full mx-auto mb-4"
+          className="mx-auto mb-4 w-full"
         />
       </div>
     </div>

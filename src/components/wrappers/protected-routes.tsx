@@ -15,7 +15,7 @@ export default function ProtectedRoute({
     if (!session) {
       sessionStorage.setItem(
         SESSION_STORAGE_KEYS.REDIRECT_PATH,
-        window.location.pathname
+        window.location.pathname,
       );
     }
   }, [session]);

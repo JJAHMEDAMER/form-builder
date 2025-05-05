@@ -59,7 +59,7 @@ export default function SingleSelectElement({
 
   const handleDeleteClick = (value: string) => {
     const newOptions = elementData.options.filter(
-      (option) => option.value !== value
+      (option) => option.value !== value,
     );
     setFormData((prev) => {
       const temp = new Map(prev);
@@ -69,12 +69,12 @@ export default function SingleSelectElement({
   };
 
   return (
-    <div className="border p-4 mb-4  rounded-md">
+    <div className="mb-4 rounded-md border p-4">
       <ElementsTitle
         contentEditable
         suppressContentEditableWarning={true}
         onInput={handleInputChange}
-        className={`text-lg font-bold mb-2 px-2`}
+        className={`mb-2 px-2 text-lg font-bold`}
         data-placeholder={"Untitled Question"}
       />
 
@@ -109,7 +109,7 @@ export default function SingleSelectElement({
 
       <Button
         onClick={handleAddClick}
-        className="flex gap-2 mt-4"
+        className="mt-4 flex gap-2"
         variant="outline"
       >
         <CirclePlus />
