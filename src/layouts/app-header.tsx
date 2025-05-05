@@ -12,8 +12,8 @@ export default function AppHeader() {
   };
 
   return (
-    <header className="container flex items-center h-full bg-sky-900 text-white p-4">
-      <div className="w-full flex justify-between items-center">
+    <header className="flex items-center h-full bg-sky-900 text-white p-4">
+      <div className="w-full container flex justify-between items-center">
         <div>
           <h1 className="text-2xl font-bold">Form Builder</h1>
           <p className="text-sm text-gray-300">Build forms with ease</p>
