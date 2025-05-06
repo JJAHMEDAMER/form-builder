@@ -7,7 +7,7 @@ export const MainLayout = () => {
       <div className="sticky top-0 z-10 h-[5rem]">
         <AppHeader />
       </div>
-      <div className="relative container h-[calc(100vh-5rem)]">
+      <div className="relative h-[calc(100vh-5rem)]">
         <Outlet />
       </div>
     </div>

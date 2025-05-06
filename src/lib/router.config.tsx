@@ -1,7 +1,7 @@
 import { MainLayout } from "@/layouts/main-layout";
 import { AuthContextProvider } from "@/context/auth-context";
 import SupabaseAuthForm from "@/modules/auth/supabase-auth-form";
-import { HomePage } from "@/modules/home/home-page";
+import { getUserPageContentLoader, HomePage } from "@/modules/home/home-page";
 import { createBrowserRouter } from "react-router";
 import { routes } from "@/constants/routes";
 import ProtectedRoute from "@/components/wrappers/protected-routes";
@@ -24,6 +24,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: routes.home,
+            loader: getUserPageContentLoader,
             element: (
               <ProtectedRoute>
                 <HomePage />
@@ -31,7 +32,7 @@ export const router = createBrowserRouter([
             ),
           },
           {
-            path: "/auth",
+            path: routes.auth,
             loader: unauthenticatedRoutesLoader,
             element: (
               <UnauthenticatedRoutes>
