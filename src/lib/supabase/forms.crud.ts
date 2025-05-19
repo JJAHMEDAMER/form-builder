@@ -12,7 +12,7 @@ export async function addNewForm(form: Record<string, any>) {
   } = await supabase.auth.getSession();
   if (!session || error) return { error };
 
-  const data = supabase.from("forms").insert([
+  const data = await supabase.from("forms").insert([
     {
       owner_id: session.user.id,
       form: form,
